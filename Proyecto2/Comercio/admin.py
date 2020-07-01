@@ -32,6 +32,17 @@ class VentaAdmin(admin.ModelAdmin):
     list_display = ['cliente','fecha','isDescuento']
     list_display_links = ['fecha','cliente']
 
+    actions = ['aplicarDescuento','quitarDescuento']
+
+    def aplicarDescuento(self, request, queryset):
+        queryset.update(descuento = True)
+    aplicarDescuento.short_description = 'Aplicar Descuento'
+
+    def quitarDescuento(self, request, queryset):
+        queryset.update(descuento = False)
+    quitarDescuento.short_description = 'Quitar Descuento'
+
+
 # Register your models here.
 admin.site.register(Categoria)
 admin.site.register(Ciudad)
