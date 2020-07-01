@@ -36,17 +36,12 @@ class Cliente(models.Model):
     def __str__(self):
         return str(self.nombre)
 
-class Venta(models.Model, Producto, Detalle):
+class Venta(models.Model):
     id = models.AutoField(primary_key = True)
     fecha = models.DateField()
     descuento = models.FloatField()
     monto_final = models.FloatField()
     Cliente = models.ForeignKey('Cliente', on_delete = models.CASCADE, null = False)
-
-    def MontoFinal(self, Producto.precio, Detalle.cantidad):
-        precio = Producto.precio
-        cantidad = Detalle.cantidad
-        monto_final = precio * cantidad
 
     def __str__(self):
         return str(self.nombre)
