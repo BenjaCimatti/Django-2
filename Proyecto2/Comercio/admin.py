@@ -28,13 +28,17 @@ class ProveedorAdmin(admin.ModelAdmin):
     list_display_links = ['nombre','telefono','direccion']
     inlines = [ProductoInline]
 
+class VentaAdmin(admin.ModelAdmin):
+    list_display = ['cliente','fecha','isDescuento']
+    list_display_links = ['fecha','cliente']
+
 # Register your models here.
 admin.site.register(Categoria)
 admin.site.register(Ciudad)
 admin.site.register(Comuna)
 admin.site.register(Direccion)
 admin.site.register(Cliente, ClienteAdmin)
-admin.site.register(Venta)
+admin.site.register(Venta, VentaAdmin)
 admin.site.register(Proveedor, ProveedorAdmin)
 admin.site.register(Producto, ProductoAdmin)
 admin.site.register(Detalle)

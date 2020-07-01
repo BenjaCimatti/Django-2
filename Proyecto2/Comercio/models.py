@@ -39,12 +39,18 @@ class Cliente(models.Model):
 class Venta(models.Model):
     id = models.AutoField(primary_key = True)
     fecha = models.DateField()
-    descuento = models.FloatField()
+    descuento = models.BooleanField()
     monto_final = models.FloatField()
     cliente = models.ForeignKey('Cliente', on_delete = models.CASCADE, null = False)
 
+    def isDescuento(self):
+        return self.descuento
+
+    isDescuento.boolean = True
+    isDescuento.short_description = 'Descuento'
+
     def __str__(self):
-        return str('Cliente {}'.format(self.cliente.nombre))
+        return str('Venta a Cliente {}'.format(self.cliente.nombre))
 
 class Proveedor(models.Model):
     RUT = models.AutoField(primary_key = True)
