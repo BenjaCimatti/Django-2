@@ -41,10 +41,10 @@ class Venta(models.Model):
     fecha = models.DateField()
     descuento = models.FloatField()
     monto_final = models.FloatField()
-    Cliente = models.ForeignKey('Cliente', on_delete = models.CASCADE, null = False)
+    cliente = models.ForeignKey('Cliente', on_delete = models.CASCADE, null = False)
 
     def __str__(self):
-        return str(self.nombre)
+        return str('Cliente {}'.format(self.cliente.nombre))
 
 class Proveedor(models.Model):
     RUT = models.AutoField(primary_key = True)
