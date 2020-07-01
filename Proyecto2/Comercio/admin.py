@@ -18,10 +18,15 @@ class ProductoAdmin(admin.ModelAdmin):
         }),
     )
 
+class ProductoInline(admin.TabularInline):
+    model = Producto
+    fields = ['nombre','precio','stock','categoria','proveedor']
+
 class ProveedorAdmin(admin.ModelAdmin):
     search_fields = ['nombre','RUT']
     list_display = ['nombre','telefono','direccion']
     list_display_links = ['nombre','telefono','direccion']
+    inlines = [ProductoInline]
 
 # Register your models here.
 admin.site.register(Categoria)
